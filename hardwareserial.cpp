@@ -1,3 +1,7 @@
+//ROS2 Node Serial Communication control ESP32 LED
+//When ROS2 ouput a character to ttyACM0 and ESP32 receive character with switch case do the operation (led blink)
+//ESP32 receive character like serial monitor
+
 #include <rclcpp/rclcpp.hpp>
 #include <boost/asio.hpp>
 #include <string>
