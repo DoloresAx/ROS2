@@ -1,0 +1,57 @@
+ROS 2 Humble packages ဖျက်ခြင်း
+sudo apt remove ~nros-humble-* -y
+
+dependency အကျန်တွေရှင်း:
+sudo apt autoremove -y
+
+config file တွေပါရှင်းချင်ရင်:
+sudo apt purge ~nros-humble-* -y
+
+Repository setting တွေပါ ဖျက်ချင်ရင်:
+sudo rm /etc/apt/sources.list.d/ros2.list
+
+Keyring:
+sudo rm /usr/share/keyrings/ros-archive-keyring.gpg
+
+rosdep cache ဖျက်ခြင်း
+rm -rf ~/.ros
+sudo rm -rf /etc/ros
+rm -rf ~/.ros/rosdep
+
+environment variable ရှင်းမရှင်းသိချင်ရင်
+printenv | grep ROS
+
+Gazebo/Ignition ပါရှင်းချင်ရင်:
+sudo apt purge '~ngazebo-*' '~nignition-*' '~nrosdev-*' -y
+sudo apt autoremove --purge -y
+sudo apt clean
+
+ROS နဲ့ဆိုင်တဲ့ pip packages
+pip list | grep -E 'colcon|ros|catkin'
+
+
+Verify Clean State
+which ros2
+printenv | grep ROS
+dpkg -l | grep ros
+apt list --installed | grep ros
+
+dpkg တွေ ကျန် နေရင်
+sudo apt purge \
+python3-rosdep2 \
+python3-rosdistro \
+python3-rosdistro-modules \
+python3-rospkg \
+python3-rospkg-modules \
+-y
+sudo apt autoremove --purge -y
+
+Verify
+dpkg -l | grep ros
+
+rosdep Reset
+sudo rm -rf /etc/ros
+sudo rm -rf /etc/rosdep
+rm -rf ~/.ros
+
+sudo reboot

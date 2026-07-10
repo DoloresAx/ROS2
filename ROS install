@@ -1,0 +1,66 @@
+ROS2 ပြန်သွင်းရင် အရင် ros2 source list နဲ့ conflitနေတက်တယ်။
+
+ls /etc/apt/sources.list.d/
+
+ROS source files အကုန်ဖျက်
+sudo rm -f /etc/apt/sources.list.d/ros2.list
+sudo rm -f /etc/apt/sources.list.d/ros-latest.list
+
+
+. Keyring ရှင်း
+sudo rm -f /usr/share/keyrings/ros-archive-keyring.gpg
+
+apt cache refresh
+sudo apt clean
+sudo apt update
+
+sudo apt install ros-humble-desktop-full
+
+.bashrc ထဲမှာ source /opt/ros/humble/setup.bash ကိုပြင်ဆင်ပါ။
+
+####################################
+
+Topic (one way - publish subscribe) အဲ့ထဲ မှာ မှ data form တွေ နဲ့ ပေးတာ။ message လို့ခေါ်တယ်။ 
+Service (feedbak
+Action
+
+Topic: ရေဒီယိုလိုင်းလိုပဲ တစ်ဖက်သတ်လွှင့်တယ်၊ တစ်ဖက်ကနားထောင်တယ် (Feedback မရှိ၊ Cancel စနစ်မရှိ)။
+
+Service: ကွန်ပျူတာမှာ file တစ်ခုကို Double click နှိပ်ပြီး ဖွင့်လိုက်သလိုပဲ။ ပွင့်လာတဲ့အထိ စောင့်ရုံပဲ၊ ကြားထဲမှာ ရပ်ခိုင်းလို့မရဘူး (Short-running task)။
+
+Action: ကြီးမားတဲ့ File တစ်ခုကို Download ဆွဲနေသလိုမျိုးပဲ။ Download ဆွဲနေတုန်း ဘယ်နှစ် % ရောက်ပြီလဲ မြင်ရတယ် (Feedback)၊ ကြားထဲမှာ ပိတ်ပစ်ချင်ရင် Pause သို့မဟုတ် Cancel နှိပ်လို့ရတယ် (Long-running task)။
+
+message ဆို တာ topic နည်းလမ်း အရ သတင်းပို့ရင် သုံးတဲ့ အရာဘဲ
+
+serveie မှာ ကျတော့ srv/ လို့ခေါ်မယ်။
+
+action ဆို action/
+
+ros2 interface show ( ငါတို့သိချင်တဲ့ messsage form တွေကို ကြည့်ချင်တဲ့ အခါ သုံးတယ်။)
+
+အားလုံးကို ပေါင်းပြီး ros2 မှာ interface လို့ဘဲ 
+
+ros2 topic echo /turtl1/cmd_vel ( topic တွေ ရဲ့ အခေြ အနေ ကို monitoring ကြည့်မယ်။
+
+ros2 topic pub /turtle1/cmd_vel/ geometry_msg/msg/Twist (message form proto နဲ့ ကြည့်မယ်။ ros2 interface proto နဲ့ data form ရယူမယ်)
+
+
+@@@@
+cli
+
+ros2 topic list -t 
+ros2 topic echo --count 3 /turtle1/cmd_vel
+ros2 topic info /turtle1/cmd_vel
+ros2 topic hz /turtle1/cmd_vel
+
+ros2 interface show geometry_msgs/msgs/Twist
+ros2 interface prot geometry_msgs/msgs/Twist
+
+ros2 pub -r 10 -t 6 /turtle1/cmd_vel geometry_msgs/msgs/Twist "Linear x,y,z" ( r is for hz rate 1s မှာ msgs ဘယ်နှစ်စောင် ပို့မလဲ? t is for time second)
+@@@@
+
+
+
+ 
+
+

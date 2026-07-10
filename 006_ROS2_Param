@@ -1,0 +1,16 @@
+$ ros2 param 
+delete    describe  dump      get       list      load      set 
+
+$ ros2 param list
+
+$ ros2 param list /turtlesim
+
+$ ros2 param set /turtlesim background_b 23
+
+$ ros2 parm get /turtlesim background_b
+
+$ ros2 param dump /turtlesim > a.yaml
+
+$ ros2 param load /turtlesim a.yaml 
+
+$ ros2 param describe /turtlesim background_b (parameter က ဘာ type လဲ (ဥပမာ- Integer လား၊ String လား) ဆိုတာ သိချင်ရင်:)
